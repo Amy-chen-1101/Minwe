@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huizhou Minwe Electronic Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7D00',
+                        secondary: '#1E293B',
+                        accent: '#0EA5E9',
+                        dark: '#0F172A',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .transition-transform-opacity {
+                transition-property: transform, opacity;
+            }
+
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            .nav-link {
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+                width: 0;
+                height: 2px;
+                background-color: white;
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .hover-lift {
+                transform: translateY(0);
+                transition: transform 0.3s ease;
+            }
+
+            .hover-lift:hover {
+                transform: translateY(-5px);
+            }
+
+            .product-image {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            .object-center {
+                object-position: center;
+            }
+
+        }
+    </style>
+    <!-- 引入翻译脚本 -->
+    <script src="trans.js"></script>
+</head>
+
+<body class="font-inter bg-light text-dark antialiased">
+
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="picture/橙色logo.png" alt="Logo" class="w-12 h-12">
+                    <span class="text-xl font-bold text-white text-shadow" data-lang-key="companyName">Huizhou Minwe Electronic Technology Co., Ltd.</span>
+                </a>
+
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navHome">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navAbout">About Us</a>
+                    <a href="#products" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navProducts">Products</a>
+                    <a href="#services" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navServices">Services</a>
+                    <a href="#contact" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navContact">Contact Us</a>
+                </nav>
+
+                <!-- 语言切换按钮 -->
+                <div class="md:flex items-center ml-4">
+                    <select id="language-selector"
+                        class="bg-primary border border-white/30 rounded-md px-3 py-1 text-white focus:outline-none focus:ring-2 focus:ring-secondary">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary/95 backdrop-blur-md">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="#home" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navHome">Home</a>
+                <a href="#about" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navAbout">About Us</a>
+                <a href="#products" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navProducts">Products</a>
+                <a href="#services" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navServices">Services</a>
+                <a href="#contact" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navContact">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="picture/PCB.jpg" alt="科技背景图" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark/80 to-dark/60"></div>
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white leading-tight mb-6 animate-fade-in"
+                    data-lang-key="heroTitle">Innovative Technology </h1>
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white leading-tight mb-6 animate-fade-in"
+                    data-lang-key="heroTitle2"><span class='text-primary'>Drives the Future</span></h1>
+                <a href="#contact"
+                    class="px-8 py-3 bg-transparent border-2 border-white hover:border-primary hover:text-primary text-white font-medium rounded-lg transition-all hover:translate-y-[-2px]"
+                    data-lang-key="heroContactBtn">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <a href="#about" class="flex flex-col items-center">
+                <span class="mb-2 text-sm" data-lang-key="heroLearnMore">Learn More</span>
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4" data-lang-key="aboutTitle">About Us</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-lang-key="aboutDesc">
+                    Minwe Technology is a leading force in the electronic technology industry, deeply committed to the spirit of innovation. Our dedicated team of experts is constantly engaged in the research, development, and production of cutting - edge electronic products. We take pride in offering high - quality intelligent solutions that not only meet but exceed the expectations of our global customers. With a focus on emerging technologies such as artificial intelligence and the Internet of Things, we strive to stay at the forefront of the industry, driving progress and transformation in the electronic products market.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fa fa-bolt text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-dark mb-1" data-lang-key="aboutFeature1Title">Innovative Spirit</h4>
+                        <p class="text-gray-600" data-lang-key="aboutFeature1Desc">
+                            We foster a culture of continuous exploration and innovation. Our R & D team is always on the lookout for new technologies, trends, and ideas. By leveraging the latest advancements in materials science, electronics engineering, and software development, we are able to launch a series of innovative products and solutions that set new benchmarks in the industry.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fa fa-users text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-dark mb-1" data-lang-key="aboutFeature2Title">Customer First</h4>
+                        <p class="text-gray-600" data-lang-key="aboutFeature2Desc">
+                            At Minwe Technology, our customers are at the heart of everything we do. We invest significant time and resources in understanding their needs, pain points, and aspirations. By maintaining open lines of communication and providing personalized support, we ensure that every customer has an excellent product and service experience. Our commitment to customer satisfaction is unwavering, and we constantly strive to build long - term relationships based on trust and mutual benefit.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fa fa-cogs text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-dark mb-1" data-lang-key="aboutFeature3Title">Strive for Perfection</h4>
+                        <p class="text-gray-600" data-lang-key="aboutFeature3Desc">
+                            We believe that excellence is not an option but a necessity. In every aspect of our business, from product design and development to manufacturing and after - sales service, we pursue perfection. Our quality control team adheres to strict standards and conducts rigorous inspections at every stage of the production process. By paying attention to the smallest details, we ensure that our products and services meet the highest quality requirements.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                        <i class="fa fa-globe text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-dark mb-1" data-lang-key="aboutFeature4Title">Global Vision</h4>
+                        <p class="text-gray-600" data-lang-key="aboutFeature4Desc">
+                            While rooted in our local community, we have our eyes on the global market. We actively participate in international technology exhibitions, collaborate with global partners, and keep a close watch on industry trends worldwide. This global perspective enables us to bring the best of both worlds to our customers, combining local insights with international expertise.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="about_us.html" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg"
+                data-lang-key="aboutMore">View More </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 我们的产品 -->
+    <section id="products" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4" data-lang-key="productsTitle">Our Products</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-lang-key="productsDesc">
+                    Explore our innovative electronic product series to bring convenience and efficiency to your life and work.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- 产品1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="picture/开盖正面.png" alt="Outdoor power bank"
+                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang-key="product1Title">Outdoor power bank</h3>
+                        <p class="text-gray-600 mb-4" data-lang-key="product1Desc">40000mAh ultra large capacity power bank, easily meets the battery life needs of multiple devices, and safeguards your digital life anytime, anywhere!</p>
+                        
+                    </div>
+                </div>
+
+                <!-- 产品2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift group">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="picture/Bank Marine Battery Charger.png" alt="Bank Marine Battery Charger"
+                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang-key="product2Title">Bank Marine Battery Charger</h3>
+                        <p class="text-gray-600 mb-4" data-lang-key="product2Desc">Supporting multiple battery types, with waterproof, short-circuit protection, and intelligent charging functions, it is an ideal charging solution for ships and electric equipment.</p>
+                        
+                    </div>
+                </div>
+
+                <!-- 产品3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift group product starter" data-category="starter">
+                    <div class="relative h-60 overflow-hidden">
+                        <img src="picture/多功能汽车打火神器.png" alt="Multifunctional power booster"
+                            class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-lang-key="product3Title">Multifunctional power booster</h3>
+                        <p class="text-gray-600 mb-4" data-lang-key="product3Desc">Integrating emergency start, inflation pump, and USB charging functions, it is suitable for 12V vehicles and has a peak starting current of 1000A, which can quickly start most vehicles.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="product.html" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg"
+                    data-lang-key="productsViewAllBtn">View All Products </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务内容 -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4" data-lang-key="servicesTitle">Our Services</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-lang-key="servicesDesc">In addition to high-quality products, we also provide professional technical support and after-sales service to let you have no worries.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 服务卡片 1 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fa fa-laptop text-primary text-2xl group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3" data-lang-key="service1Title">Technical Support</h3>
+                    <p class="text-gray-600" data-lang-key="service1Desc">Our professional technical team provides you with 7×24 online support to solve the problems you encounter in the process of using the products.</p>
+                </div>
+
+                <!-- 服务卡片 2 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fa fa-cogs text-primary text-2xl group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3" data-lang-key="service2Title">OEM</h3>
+                    <p class="text-gray-600" data-lang-key="service2Desc">Providing OEM production and original design manufacturing for global brands.</p>
+                </div>
+
+                <!-- 服务卡片 3 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fa fa-refresh text-primary text-2xl group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3" data-lang-key="service3Title">Batch production</h3>
+                    <p class="text-gray-600" data-lang-key="service3Desc">Efficient and large-scale production to meet customer order requirements.</p>
+                </div>
+
+                <!-- 服务卡片 4 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fa fa-paint-brush text-primary text-2xl group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3" data-lang-key="service4Title">Custom Development</h3>
+                    <p class="text-gray-600" data-lang-key="service4Desc">Tailor-made development services to meet your specific needs and create unique products for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-dark mb-4" data-lang-key="contactTitle">Contact Us</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto" data-lang-key="contactDesc">If you have any questions or suggestions, please feel free to contact us and we will reply to you as soon as possible.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-md mb-8">
+                        <h3 class="text-xl font-bold text-dark mb-6" data-lang-key="contactInfoTitle">Contact Information</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-map-marker text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1" data-lang-key="contactAddressTitle">Company Address</h4>
+                                    <p class="text-gray-600" data-lang-key="contactAddressDesc">Minghua Industrial Park, Ruhu Town, Huicheng District, Huizhou City, Guangdong Province, China</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1" data-lang-key="contactPhoneTitle">Contact Phone</h4>
+                                    <p class="text-gray-600">8208208820</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                                    <i class="fa-solid fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-dark mb-1" data-lang-key="contactEmailTitle">Email</h4>
+                                    <p class="text-gray-600">info@minwe.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-xl shadow-md">
+                    <div class="w-full h-auto bg-gray-200 rounded-lg overflow-hidden relative">
+                        <img src="picture/地图.png" alt="Map" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center bg-primary/50 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <a href="#" class="bg-white text-primary font-medium py-2 px-4 rounded-full">
+                                <i class="fa fa-map-marker mr-2"></i> <span data-lang-key="viewOnMap">View on Map</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="lg:col-span-1">
+                <div class="flex items-center space-x-2 mb-6">
+                    <span class="text-xl font-bold text-white" data-lang-key="companyName">Huizhou Minwe Electronic Technology Co., Ltd.</span>
+                </div>
+                <p class="text-gray-400 mb-6" data-lang-key="footerAbout">Leading innovation in electronic devices, providing high-quality power solutions for businesses and consumers worldwide.</p>
+            </div>
+
+            <div class="lg:col-span-3">
+                <h3 class="text-2xl font-semibold text-white mb-4 text-center" data-lang-key="Partnership">Partnership</h3>
+                <div class="relative">
+                    <div id="partner-logos" class="overflow-hidden py-4">
+                        <!-- 复制一份Logo用于无缝衔接 -->
+                        <div class="flex space-x-6" id="logo-track" style="min-width: max-content;">
+                            <!-- 原始Logo -->
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/橙色logo.png" alt="Partner 1" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo1.png" alt="Partner 2" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo2.png" alt="Partner 3" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo3.png" alt="Partner 4" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo4.png" alt="Partner 5" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo5.png" alt="Partner 6" class="max-w-full max-h-full">
+                            </div>
+                            
+                            <!-- 复制的Logo -->
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/橙色logo.png" alt="Partner 1" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo1.png" alt="Partner 2" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo2.png" alt="Partner 3" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo3.png" alt="Partner 4" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo4.png" alt="Partner 5" class="max-w-full max-h-full">
+                            </div>
+                            <div class="bg-gray-800/50 rounded-lg p-4 w-40 h-24 flex items-center justify-center hover-lift">
+                                <img src="picture/logo5.png" alt="Partner 6" class="max-w-full max-h-full">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full flex justify-center space-x-1">
+                        <span class="w-2 h-2 rounded-full bg-primary/30"></span>
+                        <span class="w-2 h-2 rounded-full bg-primary/30"></span>
+                        <span class="w-2 h-2 rounded-full bg-primary/30"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0" data-lang-key="footerCopyright">@ 2025 Huizhou Minwe Technology Co., Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-50%)); /* 只移动一半距离 */
+        }
+    }
+    
+    #logo-track {
+        animation: scroll 20s linear infinite;
+    }
+    
+    /* 鼠标悬停时暂停滚动 */
+    #partner-logos:hover #logo-track {
+        animation-play-state: paused;
+    }
+</style>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-secondary/95', 'backdrop-blur-md', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.remove('bg-secondary/95', 'backdrop-blur-md', 'shadow-md');
+                navbar.classList.add('bg-transparent');
+
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // 如果是移动端，点击后关闭菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // 回到顶部按钮
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>

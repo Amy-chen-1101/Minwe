@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Huizhou Minwe Electronic Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7D00',
+                        secondary: '#1E293B',
+                        accent: '#0EA5E9',
+                        dark: '#0F172A',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            
+            .bg-gradient-overlay {
+                background: linear-gradient(180deg, rgba(26, 26, 51, 0.8) 0%, rgba(26, 26, 51, 0.6) 100%);
+            }
+            
+            .hover-lift {
+                transform: translateY(0);
+                transition: transform 0.3s ease;
+            }
+            
+            .hover-lift:hover {
+                transform: translateY(-5px);
+            }
+            
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -16px;
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background-color: #007bff;
+            }
+            
+            .timeline-item::after {
+                content: '';
+                position: absolute;
+                left: -24px;
+                top: 0;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background-color: #007bff;
+                border: 3px solid white;
+            }
+            
+            .team-card {
+                transition: all 0.3s ease;
+            }
+            
+            .team-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+
+            .nav-link {
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+                width: 0;
+                height: 2px;
+                background-color: white;
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            /* 选中标签样式 */
+            .nav-link.active::after {
+                width: 100%;
+            }
+        }
+    </style>
+    
+    <!-- 引入翻译脚本 -->
+    <script src="translation_about.js"></script>
+</head>
+
+<body class="font-inter bg-light text-dark">
+    <!-- 顶部导航栏 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-secondary/95 backdrop-blur-md shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="picture/橙色logo.png" alt="Logo" class="w-12 h-12">
+                    <span class="text-xl font-bold text-white text-shadow" data-lang-key="companyName">Huizhou Minwe Electronic Technology</span>
+                </a>
+
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navHome">Home</a>
+                    <a href="index.html#about" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navAbout">About Us</a>
+                    <a href="product.html" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navProducts">Products</a>
+                    <a href="index.html#services" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navServices">Services</a>
+                    <a href="index.html#contact" class="nav-link text-white hover:text-primary transition-colors font-medium"
+                        data-lang-key="navContact">Contact Us</a>
+                </nav>
+
+                <!-- 语言切换按钮 -->
+                <div class="md:flex items-center ml-4">
+                    <select id="language-selector"
+                        class="bg-primary border border-white/30 rounded-md px-3 py-1 text-white focus:outline-none focus:ring-2 focus:ring-secondary">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary/95 backdrop-blur-md">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="#home" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navHome">Home</a>
+                <a href="#about" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navAbout">About Us</a>
+                <a href="#products" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navProducts">Products</a>
+                <a href="#services" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navServices">Services</a>
+                <a href="#contact" class="block text-white hover:text-primary transition-colors font-medium py-2"
+                    data-lang-key="navContact">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面标题区域 -->
+    <section class="pt-24 md:pt-0 h-64 md:h-96 flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/id/180/1920/1080" alt="About Us Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-primary/70"></div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white mb-4 text-shadow" data-lang-key="aboutPageTitle">关于我们</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-3xl mx-auto text-shadow" data-lang-key="aboutPageSubtitle">探索i-Sourcing Asia的故事、使命和愿景</p>
+        </div>
+    </section>
+
+    <!-- 公司简介 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6" data-lang-key="aboutCompanyTitle">我们的公司</h2>
+                    <p class="text-gray-600 mb-6" data-lang-key="aboutCompanyDesc1">
+                        i-Sourcing Asia是中国领先的电子设备制造商。我们专注于研发、生产和销售高品质的电源解决方案，包括智能电池充电器、便携式电源和启动电源等产品。
+                    </p>
+                    <p class="text-gray-600 mb-6" data-lang-key="aboutCompanyDesc2">
+                        凭借25年的行业经验，我们已经建立了强大的研发团队和生产基地，能够满足全球客户的需求。我们的产品不仅在国内市场占据领先地位，还远销欧美、亚洲等多个国家和地区。
+                    </p>
+                    <p class="text-gray-600 mb-8" data-lang-key="aboutCompanyDesc3">
+                        我们始终坚持"质量第一、客户至上"的经营理念，致力于为客户提供最优质的产品和服务。通过不断创新和提升，我们已经成为电子设备行业的领军企业之一。
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-secondary mb-2" data-lang-key="aboutStats1">25+</div>
+                            <p class="text-gray-600" data-lang-key="aboutStats1Desc">年行业经验</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-secondary mb-2" data-lang-key="aboutStats2">50+</div>
+                            <p class="text-gray-600" data-lang-key="aboutStats2Desc">国家和地区</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-secondary mb-2" data-lang-key="aboutStats3">70000+</div>
+                            <p class="text-gray-600" data-lang-key="aboutStats3Desc">生产基地(㎡)</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-secondary mb-2" data-lang-key="aboutStats4">50+</div>
+                            <p class="text-gray-600" data-lang-key="aboutStats4Desc">产品系列</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div class="relative">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="https://picsum.photos/id/1/800/600" alt="Company Overview" class="w-full h-auto">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg hidden md:block">
+                            <div class="flex items-center">
+                                <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-trophy text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600" data-lang-key="aboutAchievement1">行业领先</p>
+                                    <p class="font-bold text-xl" data-lang-key="aboutAchievement1Desc">中国电子设备制造商</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使命、愿景和价值观 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-12" data-lang-key="aboutMissionTitle">使命、愿景和价值观</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 使命 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-bullseye text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" data-lang-key="aboutMission">我们的使命</h3>
+                    <p class="text-gray-600" data-lang-key="aboutMissionDesc">
+                        提供创新、可靠的电源解决方案，满足全球客户的需求，为人们的生活和工作提供便利。
+                    </p>
+                </div>
+                
+                <!-- 愿景 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-eye text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" data-lang-key="aboutVision">我们的愿景</h3>
+                    <p class="text-gray-600" data-lang-key="aboutVisionDesc">
+                        成为全球领先的电子设备制造商，以创新和品质赢得客户的信任和尊重。
+                    </p>
+                </div>
+                
+                <!-- 价值观 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-heart text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" data-lang-key="aboutValues">我们的价值观</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                            <span data-lang-key="aboutValue1">诚信正直</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                            <span data-lang-key="aboutValue2">客户至上</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                            <span data-lang-key="aboutValue3">创新卓越</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                            <span data-lang-key="aboutValue4">团队合作</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 管理团队 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-4" data-lang-key="aboutTeamTitle">管理团队</h2>
+            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12" data-lang-key="aboutTeamDesc">
+                我们的管理团队由行业资深专家组成，拥有丰富的经验和专业知识，带领公司不断创新和发展。
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 团队成员1 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1005/600/600" alt="CEO" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1" data-lang-key="aboutTeam1Name">罗生</h3>
+                        <p class="text-secondary mb-4" data-lang-key="aboutTeam1Position">首席执行官</p>
+                        <p class="text-gray-600 mb-6" data-lang-key="aboutTeam1Desc">
+                            拥有25年电子设备行业经验，曾在多家知名企业担任高管职位，带领公司实现了快速增长。
+                        </p>
+                        <div class="flex space-x-4">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 团队成员2 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="picture/搞笑一下.jpg" alt="CTO" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1" data-lang-key="aboutTeam2Name">梅生</h3>
+                        <p class="text-secondary mb-4" data-lang-key="aboutTeam2Position">首席技术官</p>
+                        <p class="text-gray-600 mb-6" data-lang-key="aboutTeam2Desc">
+                            拥有多年研发经验，负责公司的技术战略和产品创新，带领团队开发了多项核心技术。
+                        </p>
+                        <div class="flex space-x-4">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 团队成员3 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1011/600/600" alt="COO" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1" data-lang-key="aboutTeam3Name">周生</h3>
+                        <p class="text-secondary mb-4" data-lang-key="aboutTeam3Position">首席运营官</p>
+                        <p class="text-gray-600 mb-6" data-lang-key="aboutTeam3Desc">
+                            拥有32年运营管理经验，负责公司的日常运营和供应链管理，确保产品质量和交付效率。
+                        </p>
+                        <div class="flex space-x-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司文化 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center mb-12" data-lang-key="aboutCultureTitle">公司文化</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-gray-50 p-8 rounded-xl mb-8">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+                                <i class="fa fa-users text-secondary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2" data-lang-key="aboutCulture1">团队合作</h3>
+                                <p class="text-gray-600" data-lang-key="aboutCulture1Desc">
+                                    我们相信团队的力量大于个人，鼓励员工之间的协作和沟通，共同实现公司目标。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-8 rounded-xl mb-8">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+                                <i class="fa fa-lightbulb text-secondary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2" data-lang-key="aboutCulture2">创新精神</h3>
+                                <p class="text-gray-600" data-lang-key="aboutCulture2Desc">
+                                    我们鼓励创新和尝试新事物，不断探索新的技术和市场机会，为客户提供更好的产品和服务。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-8 rounded-xl">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-secondary/10 p-3 rounded-full mr-4">
+                                <i class="fa fa-handshake text-secondary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2" data-lang-key="aboutCulture3">客户导向</h3>
+                                <p class="text-gray-600" data-lang-key="aboutCulture3Desc">
+                                    我们始终以客户为中心，关注客户需求和反馈，不断改进产品和服务，提高客户满意度。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://picsum.photos/id/119/800/1000" alt="Company Culture" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg hidden md:block">
+                        <div class="flex items-center">
+                            <div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-600" data-lang-key="aboutCultureQuote">我们的文化</p>
+                                <p class="font-bold text-xl" data-lang-key="aboutCultureQuoteDesc">"创新、协作、卓越"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+                                    
